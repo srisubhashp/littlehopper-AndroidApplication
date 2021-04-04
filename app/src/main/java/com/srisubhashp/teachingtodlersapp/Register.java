@@ -90,9 +90,8 @@ public class Register extends AppCompatActivity {
                         if(task.isSuccessful()) {
                             Toast.makeText(Register.this, "Registration Complete", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
                         } else {
-                            Toast.makeText(Register.this, "Registration Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Register.this, "Registration Failed! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                         }
 
