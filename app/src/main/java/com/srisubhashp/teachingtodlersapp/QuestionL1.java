@@ -3,15 +3,17 @@ package com.srisubhashp.teachingtodlersapp;
 public class QuestionL1
 {
     String question;
+    int imageId;
     String optionA;
     String optionB;
     String optionC;
     String optionD;
     int correctAnswer;
 
-    public QuestionL1(String question, String optionA, String optionB, String optionC, String optionD, int correctAnswer)
+    public QuestionL1(String question,int imageId, String optionA, String optionB, String optionC, String optionD, int correctAnswer)
     {
         this.question = question;
+        this.imageId=imageId;
         this.optionA = optionA;
         this.optionB = optionB;
         this.optionC = optionC;
@@ -28,6 +30,10 @@ public class QuestionL1
     {
         this.question = question;
     }
+
+    public int getImageId(){return imageId;}
+
+    public void setImageId(int imageId) { this.imageId=imageId; }
 
     public String getOptionA() {
         return optionA;

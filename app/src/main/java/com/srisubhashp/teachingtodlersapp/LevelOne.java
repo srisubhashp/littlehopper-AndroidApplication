@@ -8,11 +8,14 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,18 +26,21 @@ import static android.content.res.ColorStateList.*;
 public class LevelOne extends AppCompatActivity implements View.OnClickListener
 {
     private TextView question, qCount;
+    private ImageView imageVar;
     private Button option1, option2, option3, option4;
     private List<QuestionL1> questionL1List;
     int questionNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setContentView(R.layout.activity_level_one);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_level_two);
 
-        question = findViewById(R.id.question);
+        question = findViewById(R.id.textView2);
         qCount = findViewById(R.id.quest_num);
-
+        //imageId.setImageDrawable(getResources().getDrawable(R.id.imageId));
+        imageVar=findViewById(R.id.imageView4);
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
         option3 = findViewById(R.id.option3);
@@ -58,21 +64,21 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         questionL1List = new ArrayList<>();
 
         // assigning values through constructor
-        questionL1List.add(new QuestionL1("*pink img*", "Pink", "Blue", "Red", "Orange", 1));
-        questionL1List.add(new QuestionL1("*red img*", "Blue", "Pink", "Orange", "Red", 4));
-        questionL1List.add(new QuestionL1("*blue img*", "Green", "Yellow", "Blue", "Orange", 3));
-        questionL1List.add(new QuestionL1("*brown img*", "Black", "Brown", "Orange", "Red",2));
-        questionL1List.add(new QuestionL1("*purple img*", "Pink", "Blue", "Green", "Purple",4));
-        questionL1List.add(new QuestionL1("*green img*", "Green", "Orange", "Blue", "Purple",1));
-        questionL1List.add(new QuestionL1("*black img*", "Brown", "Black", "Gray", "Blue",2));
-        questionL1List.add(new QuestionL1("*gray img*", "Black", "Brown", "Gray", "Pink",3));
-        questionL1List.add(new QuestionL1("*maroon img*", "Red", "Purple", "Maroon", "Magenta",3));
-        questionL1List.add(new QuestionL1("*yellow img*", "Yellow", "Orange", "Red", "Purple",1));
-        questionL1List.add(new QuestionL1("*turquoise img*", "Blue", "Turquoise", "Green", "Sea Green",2));
-        questionL1List.add(new QuestionL1("*magenta img*", "Red", "Purple", "Magenta", "Maroon",3));
-        questionL1List.add(new QuestionL1("*peach img*", "Orange", "Pink", "Red", "Peach",4));
-        questionL1List.add(new QuestionL1("*tan img*", "Tan", "Beige", "Brown", "Orange",1));
-        questionL1List.add(new QuestionL1("*beige img*", "Brown", "Tan", "Brown", "Beige",4));
+        questionL1List.add(new QuestionL1("*pink img*",R.drawable.color_1,"Pink", "Blue", "Red", "Orange", 1));
+        questionL1List.add(new QuestionL1("*red img*",R.drawable.color_2, "Blue", "Pink", "Orange", "Red", 4));
+        questionL1List.add(new QuestionL1("*blue img*",R.drawable.color_3, "Green", "Yellow", "Blue", "Orange", 3));
+        questionL1List.add(new QuestionL1("*brown img*",R.drawable.color_4, "Black", "Brown", "Orange", "Red",2));
+        questionL1List.add(new QuestionL1("*purple img*",R.drawable.color_1, "Pink", "Blue", "Green", "Purple",4));
+        questionL1List.add(new QuestionL1("*green img*",R.drawable.color_2, "Green", "Orange", "Blue", "Purple",1));
+        questionL1List.add(new QuestionL1("*black img*",R.drawable.color_3, "Brown", "Black", "Gray", "Blue",2));
+        questionL1List.add(new QuestionL1("*gray img*",R.drawable.color_4, "Black", "Brown", "Gray", "Pink",3));
+        questionL1List.add(new QuestionL1("*maroon img*",R.drawable.color_1, "Red", "Purple", "Maroon", "Magenta",3));
+        questionL1List.add(new QuestionL1("*yellow img*",R.drawable.color_2, "Yellow", "Orange", "Red", "Purple",1));
+        questionL1List.add(new QuestionL1("*turquoise img*",R.drawable.color_3, "Blue", "Turquoise", "Green", "Sea Green",2));
+        questionL1List.add(new QuestionL1("*magenta img*",R.drawable.color_4, "Red", "Purple", "Magenta", "Maroon",3));
+        questionL1List.add(new QuestionL1("*peach img*",R.drawable.color_1, "Orange", "Pink", "Red", "Peach",4));
+        questionL1List.add(new QuestionL1("*tan img*",R.drawable.color_2, "Tan", "Beige", "Brown", "Orange",1));
+        questionL1List.add(new QuestionL1("*beige img*",R.drawable.color_3, "Brown", "Tan", "Brown", "Beige",4));
 
         // setting the questions
         setQuestion();
@@ -82,6 +88,10 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
     {
         // transferring question elements ot display
         question.setText(questionL1List.get(0).getQuestion());
+
+        Drawable drawable=getResources().getDrawable(questionL1List.get(0).getImageId());
+        imageVar.setImageDrawable(drawable);
+        //imageVar.setImageResource(R.drawable.color_1);
         option1.setText(questionL1List.get(0).getOptionA());
         option2.setText(questionL1List.get(0).getOptionB());
         option3.setText(questionL1List.get(0).getOptionC());
@@ -163,11 +173,8 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                 case 4:
                     option4.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
                     break;
-
             }
-
         }
-
         // move onto next question
         changeQuestion();
     }
@@ -183,10 +190,12 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
             // animation that will change the question
             tranAnim(question, 0, 0, 1);
-            tranAnim(option1, 0, 1, 2);
-            tranAnim(option2, 0, 2, 2);
-            tranAnim(option3, 0, 3, 2);
-            tranAnim(option4, 0, 4,2);
+            tranAnim(imageVar,0,1,1);
+            tranAnim(option1, 0, 2, 2);
+            tranAnim(option2, 0, 3, 2);
+            tranAnim(option3, 0, 4, 2);
+            tranAnim(option4, 0, 5,2);
+
 
             qCount.setText(String.valueOf(questionNum+1) + "/" + String.valueOf(questionL1List.size()));
 
@@ -223,15 +232,18 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                                         ((TextView) view).setText(questionL1List.get(questionNum).getQuestion());
                                         break;
                                     case 1:
-                                        ((Button) view).setText(questionL1List.get(questionNum).getOptionA());
+                                        ((ImageView) view).setImageResource(R.drawable.color_1);
                                         break;
                                     case 2:
-                                        ((Button) view).setText(questionL1List.get(questionNum).getOptionB());
+                                        ((Button) view).setText(questionL1List.get(questionNum).getOptionA());
                                         break;
                                     case 3:
-                                        ((Button) view).setText(questionL1List.get(questionNum).getOptionC());
+                                        ((Button) view).setText(questionL1List.get(questionNum).getOptionB());
                                         break;
                                     case 4:
+                                        ((Button) view).setText(questionL1List.get(questionNum).getOptionC());
+                                        break;
+                                    case 5:
                                         ((Button) view).setText(questionL1List.get(questionNum).getOptionD());
                                         break;
                                 }
@@ -241,8 +253,8 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                                     ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#FFFFFF")));
 
 
-                                tranAnim(view, 1, viewNum, category);
-
+                                tranAnim(view, 2, viewNum, category);
+                                // changed from 1 to 2.
                             }
 
                         }
@@ -254,7 +266,6 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
                         @Override
                         public void onAnimationRepeat(Animator animation) {
-
                         }
                     });
         }
@@ -279,26 +290,28 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                                             ((TextView) view).setText(questionL1List.get(questionNum).getQuestion());
                                             break;
                                         case 1:
-                                            ((Button) view).setText(questionL1List.get(questionNum).getOptionA());
+                                            ((ImageView) view).setImageResource(questionL1List.get(questionNum).getImageId());
                                             break;
                                         case 2:
-                                            ((Button) view).setText(questionL1List.get(questionNum).getOptionB());
+                                            ((Button) view).setText(questionL1List.get(questionNum).getOptionA());
                                             break;
                                         case 3:
-                                            ((Button) view).setText(questionL1List.get(questionNum).getOptionC());
+                                            ((Button) view).setText(questionL1List.get(questionNum).getOptionB());
                                             break;
                                         case 4:
+                                            ((Button) view).setText(questionL1List.get(questionNum).getOptionC());
+                                            break;
+                                        case 5:
                                             ((Button) view).setText(questionL1List.get(questionNum).getOptionD());
                                             break;
                                     }
 
-
-                                    if (viewNum != 0)
+                                    if (viewNum != 0&&viewNum!=1)
                                         ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#FFFFFF")));
 
 
-                                    tranAnim(view, 1, viewNum, category);
-
+                                    tranAnim(view, 2, viewNum, category);
+                                    //changed from 1 to 2.
                                 }
 
                             }
