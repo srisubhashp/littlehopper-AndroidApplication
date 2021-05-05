@@ -26,6 +26,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
     private Button option1, option2, option3, option4;
     private List<QuestionL2> questionL2List;
     int questionNum;
+    int correctAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +139,9 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         {
             // user clicked the correct question
 
+            // increment correct number of answers
+            correctAnswers++;
+
             // set button color to green
             ((Button)view).setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
         }
@@ -195,7 +199,8 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         else // we are done with the questions
         {
             // we will display the score activity
-            Intent intent = new Intent(LevelTwo.this,LevelTwoScoreActivity.class);
+            Intent intent = new Intent(LevelTwo.this,ScoreActivity.class);
+            intent.putExtra("SCORE", String.valueOf(correctAnswers) + "/" + String.valueOf(questionL2List.size()));
             startActivity(intent);
             LevelTwo.this.finish();
         }
