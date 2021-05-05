@@ -52,27 +52,27 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
     private void getQuestionsList()
     {
 
-        int x, y;
+        int x, y, i;
 
         // creating an array list that will hold the questions, answers, and correct answer
         questionL2List = new ArrayList<>();
 
         // assigning values through constructor
-        questionL2List.add(new QuestionL2("What is 2 + 2?", "4", "3", "1", "2", 1));
-        questionL2List.add(new QuestionL2("What is 2 x 3?", "7", "8", "6", "5", 3));
-        questionL2List.add(new QuestionL2("What is 25 / 5?", "20", "30", "125", "5", 4));
-        questionL2List.add(new QuestionL2("What is 8 - 6?", "2", "1", "14", "3", 1));
-        questionL2List.add(new QuestionL2("What is 2 + 7?", "5", "9", "10", "4", 2));
-        questionL2List.add(new QuestionL2("What is 2 + 2?", "4", "3", "1", "2", 1));
-        questionL2List.add(new QuestionL2("What is 2 x 3?", "7", "8", "6", "5", 3));
-        questionL2List.add(new QuestionL2("What is 25 / 5?", "20", "30", "125", "5", 4));
-        questionL2List.add(new QuestionL2("What is 8 - 6?", "2", "1", "14", "3", 1));
-        questionL2List.add(new QuestionL2("What is 2 + 7?", "5", "9", "10", "4", 2));
-        questionL2List.add(new QuestionL2("What is 2 + 2?", "4", "3", "1", "2", 1));
-        questionL2List.add(new QuestionL2("What is 2 x 3?", "7", "8", "6", "5", 3));
-        questionL2List.add(new QuestionL2("What is 25 / 5?", "20", "30", "125", "5", 4));
-        questionL2List.add(new QuestionL2("What is 8 - 6?", "2", "1", "14", "3", 1));
-        questionL2List.add(new QuestionL2("What is 2 + 7?", "5", "9", "10", "4", 2));
+        questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
+        questionL2List.add(new QuestionL2("2 x 3 = __", "7", "8", "6", "5", 3));
+        questionL2List.add(new QuestionL2("25 / 5 = __", "20", "30", "125", "5", 4));
+        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
+        questionL2List.add(new QuestionL2("2 + 7 = __", "5", "9", "10", "4", 2));
+        questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
+        questionL2List.add(new QuestionL2("2 x 3 = __", "7", "8", "6", "5", 3));
+        questionL2List.add(new QuestionL2("25 / 5 = __", "20", "30", "125", "5", 4));
+        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
+        questionL2List.add(new QuestionL2("2 + 7 = __", "5", "9", "10", "4", 2));
+        questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
+        questionL2List.add(new QuestionL2("2 x 3 = __", "7", "8", "6", "5", 3));
+        questionL2List.add(new QuestionL2("25 / 5 = __", "20", "30", "125", "5", 4));
+        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
+        questionL2List.add(new QuestionL2("2 + 7 = __", "5", "9", "10", "4", 2));
 
         // setting the questions
         setQuestion();
@@ -183,11 +183,11 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
             questionNum++;
 
             // animation that will change the question
-            tranAnim(question, 0, 0);
-            tranAnim(option1, 0, 1);
-            tranAnim(option2, 0, 2);
-            tranAnim(option3, 0, 3);
-            tranAnim(option4, 0, 4);
+            tranAnim(question, 0, 0,1);
+            tranAnim(option1, 0, 1,2);
+            tranAnim(option2, 0, 2,2);
+            tranAnim(option3, 0, 3,2);
+            tranAnim(option4, 0, 4,2);
 
             qCount.setText(String.valueOf(questionNum+1) + "/" + String.valueOf(questionL2List.size()));
 
@@ -202,63 +202,123 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
     }
 
     // animation for program
-    private void tranAnim(View view, final int value, int viewNum)
+    private void tranAnim(View view, final int value, int viewNum, int category)
     {
-
-        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(600)
-                .setStartDelay(600).setInterpolator(new DecelerateInterpolator())
-                .setListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
-
-                    }
-
-                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        if(value == 0)
-                        {
-                            switch (viewNum)
-                            {
-                                // if view number is 0 then it is a question
-                                case 0:
-                                    ((TextView)view).setText(questionL2List.get(questionNum).getQuestion());
-                                    break;
-                                case 1:
-                                    ((Button)view).setText(questionL2List.get(questionNum).getOptionA());
-                                    break;
-                                case 2:
-                                    ((Button)view).setText(questionL2List.get(questionNum).getOptionB());
-                                    break;
-                                case 3:
-                                    ((Button)view).setText(questionL2List.get(questionNum).getOptionC());
-                                    break;
-                                case 4:
-                                    ((Button)view).setText(questionL2List.get(questionNum).getOptionD());
-                                    break;
-                            }
-
-
-                            if(viewNum != 0)
-                                ((Button)view).setBackgroundTintList(valueOf(Color.parseColor("#E99C03")));
-
-
-                            tranAnim(view,1,viewNum);
+        if(category == 2)
+        {
+            view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(600)
+                    .setStartDelay(600).setInterpolator(new DecelerateInterpolator())
+                    .setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
 
                         }
 
-                    }
+                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            if(value == 0)
+                            {
+                                switch (viewNum)
+                                {
+                                    // if view number is 0 then it is a question
+                                    case 0:
+                                        ((TextView)view).setText(questionL2List.get(questionNum).getQuestion());
+                                        break;
+                                    case 1:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionA());
+                                        break;
+                                    case 2:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionB());
+                                        break;
+                                    case 3:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionC());
+                                        break;
+                                    case 4:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionD());
+                                        break;
+                                }
 
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
 
-                    }
+                                if(viewNum != 0)
+                                    ((Button)view).setBackgroundTintList(valueOf(Color.parseColor("#E99C03")));
 
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
 
-                    }
-                });
+                                tranAnim(view,1,viewNum,category);
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+        }
+        else
+        {
+            view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500)
+                    .setStartDelay(500).setInterpolator(new DecelerateInterpolator())
+                    .setListener(new Animator.AnimatorListener() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+
+                        }
+
+                        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            if(value == 0)
+                            {
+                                switch (viewNum)
+                                {
+                                    // if view number is 0 then it is a question
+                                    case 0:
+                                        ((TextView)view).setText(questionL2List.get(questionNum).getQuestion());
+                                        break;
+                                    case 1:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionA());
+                                        break;
+                                    case 2:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionB());
+                                        break;
+                                    case 3:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionC());
+                                        break;
+                                    case 4:
+                                        ((Button)view).setText(questionL2List.get(questionNum).getOptionD());
+                                        break;
+                                }
+
+
+                                if(viewNum != 0)
+                                    ((Button)view).setBackgroundTintList(valueOf(Color.parseColor("#E99C03")));
+
+
+                                tranAnim(view,1,viewNum,category);
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onAnimationCancel(Animator animation) {
+
+                        }
+
+                        @Override
+                        public void onAnimationRepeat(Animator animation) {
+
+                        }
+                    });
+        }
+
 
     }
 }

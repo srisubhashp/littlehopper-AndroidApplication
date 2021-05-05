@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
-        <activity android:name=".LevelTwoScoreActivity"></activity>
+        <activity android:name=".LevelOneScoreActivity"></activity>
+        <activity android:name=".LevelTwoScoreActivity" />
         <activity android:name=".Settings" />
         <activity android:name=".Statistics" />
         <activity android:name=".LevelTracking" />
