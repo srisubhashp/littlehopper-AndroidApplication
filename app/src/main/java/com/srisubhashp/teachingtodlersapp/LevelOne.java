@@ -238,7 +238,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
 
                                 if (viewNum != 0)
-                                    ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#E99C03")));
+                                    ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#FFFFFF")));
 
 
                                 tranAnim(view, 1, viewNum, category);
@@ -294,7 +294,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
 
                                     if (viewNum != 0)
-                                        ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#E99C03")));
+                                        ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#FFFFFF")));
 
 
                                     tranAnim(view, 1, viewNum, category);
