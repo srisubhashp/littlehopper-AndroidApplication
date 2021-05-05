@@ -65,21 +65,21 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         questionL1List = new ArrayList<>();
 
         // assigning values through constructor
-        questionL1List.add(new QuestionL1("*pink img*",R.drawable.color_1,"Pink", "Blue", "Red", "Orange", 1));
-        questionL1List.add(new QuestionL1("*red img*",R.drawable.color_2, "Blue", "Pink", "Orange", "Red", 4));
-        questionL1List.add(new QuestionL1("*blue img*",R.drawable.color_3, "Green", "Yellow", "Blue", "Orange", 3));
-        questionL1List.add(new QuestionL1("*brown img*",R.drawable.color_4, "Black", "Brown", "Orange", "Red",2));
-        questionL1List.add(new QuestionL1("*purple img*",R.drawable.color_1, "Pink", "Blue", "Green", "Purple",4));
-        questionL1List.add(new QuestionL1("*green img*",R.drawable.color_2, "Green", "Orange", "Blue", "Purple",1));
-        questionL1List.add(new QuestionL1("*black img*",R.drawable.color_3, "Brown", "Black", "Gray", "Blue",2));
-        questionL1List.add(new QuestionL1("*gray img*",R.drawable.color_4, "Black", "Brown", "Gray", "Pink",3));
-        questionL1List.add(new QuestionL1("*maroon img*",R.drawable.color_1, "Red", "Purple", "Maroon", "Magenta",3));
-        questionL1List.add(new QuestionL1("*yellow img*",R.drawable.color_2, "Yellow", "Orange", "Red", "Purple",1));
-        questionL1List.add(new QuestionL1("*turquoise img*",R.drawable.color_3, "Blue", "Turquoise", "Green", "Sea Green",2));
-        questionL1List.add(new QuestionL1("*magenta img*",R.drawable.color_4, "Red", "Purple", "Magenta", "Maroon",3));
-        questionL1List.add(new QuestionL1("*peach img*",R.drawable.color_1, "Orange", "Pink", "Red", "Peach",4));
-        questionL1List.add(new QuestionL1("*tan img*",R.drawable.color_2, "Tan", "Beige", "Brown", "Orange",1));
-        questionL1List.add(new QuestionL1("*beige img*",R.drawable.color_3, "Brown", "Tan", "Brown", "Beige",4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.pink,"Pink", "Blue", "Red", "Orange", 1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.red, "Blue", "Pink", "Orange", "Red", 4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.blue, "Green", "Yellow", "Blue", "Orange", 3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.brown, "Black", "Brown", "Orange", "Red",2));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.purple, "Pink", "Blue", "Green", "Purple",4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.green, "Green", "Orange", "Blue", "Purple",1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.black, "Brown", "Black", "Gray", "Blue",2));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.gray, "Black", "Brown", "Gray", "Pink",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.maroon, "Red", "Purple", "Maroon", "Magenta",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.yellow, "Yellow", "Orange", "Red", "Purple",1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.turquoise, "Blue", "Turquoise", "Green", "Sea Green",2));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.tan, "Tan", "Beige", "Brown", "Orange",1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.beige, "Brown", "Tan", "Brown", "Beige",4));
 
         // setting the questions
         setQuestion();
