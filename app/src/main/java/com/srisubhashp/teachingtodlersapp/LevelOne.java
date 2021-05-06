@@ -79,7 +79,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         questionL1List.add(new QuestionL1("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
         questionL1List.add(new QuestionL1("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
         questionL1List.add(new QuestionL1("What color is this?",R.drawable.tan, "Tan", "Beige", "Brown", "Orange",1));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.beige, "Brown", "Tan", "Brown", "Beige",4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.orange, "Brown", "Tan", "Orange", "Beige",3));
 
         // setting the questions
         setQuestion();
