@@ -64,21 +64,21 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
         question3List = new ArrayList<>();
 
         // assigning values through constructor
-        question3List.add(new QuestionL3("What color is this?",R.drawable.pink,"Pink", "Blue", "Red", "Orange", 1));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.red, "Blue", "Pink", "Orange", "Red", 4));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.blue, "Green", "Yellow", "Blue", "Orange", 3));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.brown, "Black", "Brown", "Orange", "Red",2));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.purple, "Pink", "Blue", "Green", "Purple",4));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.green, "Green", "Orange", "Blue", "Purple",1));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.black, "Brown", "Black", "Gray", "Blue",2));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.gray, "Black", "Brown", "Gray", "Pink",3));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.maroon, "Red", "Purple", "Maroon", "Magenta",3));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.yellow, "Yellow", "Orange", "Red", "Purple",1));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.turquoise, "Blue", "Turquoise", "Green", "Sea Green",2));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.tan, "Tan", "Beige", "Brown", "Orange",1));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.orange, "Brown", "Tan", "Brown", "Beige",4));
+        question3List.add(new QuestionL3("What is this?",R.drawable.apple,"Apple", "Orange", "Cherry", "Kiwi", 1));
+        question3List.add(new QuestionL3("What is this?",R.drawable.chicken, "Cat", "Dog", "Chicken", "Egg",3));
+        question3List.add(new QuestionL3("What is this?",R.drawable.dog, "Fox", "Dog", "Cat", "Raccoon",2));
+        question3List.add(new QuestionL3("What is this?",R.drawable.horse, "Cow", "Horse", "Wheat", "Donkey",2));
+        question3List.add(new QuestionL3("What is this?",R.drawable.cow, "Milk", "Farm", "Cow", "Bucket",3));
+        question3List.add(new QuestionL3("What is this?",R.drawable.key, "Key", "Door", "Lock", "House",1));
+        question3List.add(new QuestionL3("What is this?",R.drawable.bread, "Bread", "Sandwich", "Knife", "Butter",1));
+        question3List.add(new QuestionL3("What is this?",R.drawable.pen, "Pen", "Pencil", "Eraser", "Stick",1));
+        question3List.add(new QuestionL3("What is this?",R.drawable.door, "Door", "Room", "House", "Window",1));
+        question3List.add(new QuestionL3("What is this?",R.drawable.cup, "Fork", "Plate", "Bowl", "Cup",4));
+        question3List.add(new QuestionL3("What is this?",R.drawable.tree, "Sky", "Grass", "Bush", "Tree",4));
+        question3List.add(new QuestionL3("What is this?",R.drawable.house, "City", "Room", "House", "Back Yard",3));
+        question3List.add(new QuestionL3("What is this?",R.drawable.bed, "Bed", "Tent", "T-Shirt", "Pants", 1));
+        question3List.add(new QuestionL3("What is this?",R.drawable.bike, "Motorcycle", "Bicycle", "Scooter", "Skateboard",2));
+        question3List.add(new QuestionL3("What is this?",R.drawable.banana, "Orange", "Apple", "Banana", "Watermelon", 3));
 
         // setting the questions
         setQuestion();
