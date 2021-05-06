@@ -78,7 +78,6 @@ public class Login extends AppCompatActivity {
                             finish();
                         } else {
                             Toast.makeText(Login.this, "Sign-in Failed! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class)); // to be  deleted
                             progressBar2.setVisibility(View.INVISIBLE);
                         }
                     }
