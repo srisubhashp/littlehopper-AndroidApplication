@@ -58,27 +58,27 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
     private void getQuestionsList()
     {
 
-        int x, y, i,k=0;
+        int x, y, i;
 
         // creating an array list that will hold the questions, answers, and correct answer
         questionL1List = new ArrayList<>();
 
         // assigning values through constructor
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.pink,"Pink", "Blue", "Red", "Orange", 1));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.red, "Blue", "Pink", "Orange", "Red", 4));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.blue, "Green", "Yellow", "Blue", "Orange", 3));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.brown, "Black", "Brown", "Orange", "Red",2));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.purple, "Pink", "Blue", "Green", "Purple",4));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.green, "Green", "Orange", "Blue", "Purple",1));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.black, "Brown", "Black", "Gray", "Blue",2));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.gray, "Black", "Brown", "Gray", "Pink",3));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.maroon, "Red", "Purple", "Maroon", "Magenta",3));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.yellow, "Yellow", "Orange", "Red", "Purple",1));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.turquoise, "Blue", "Turquoise", "Green", "Sea Green",2));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.tan, "Tan", "Yellow", "Brown", "Orange",1));
-        questionL1List.add(new QuestionL1("What color is this? ",R.drawable.orange, "Brown", "Tan", "Orange", "Beige",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.pink,"Pink", "Blue", "Red", "Orange", 1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.red, "Blue", "Pink", "Orange", "Red", 4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.blue, "Green", "Yellow", "Blue", "Orange", 3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.brown, "Black", "Brown", "Orange", "Red",2));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.purple, "Pink", "Blue", "Green", "Purple",4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.green, "Green", "Orange", "Blue", "Purple",1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.black, "Brown", "Black", "Gray", "Blue",2));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.gray, "Black", "Brown", "Gray", "Pink",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.maroon, "Red", "Purple", "Maroon", "Magenta",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.yellow, "Yellow", "Orange", "Red", "Purple",1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.turquoise, "Blue", "Turquoise", "Green", "Sea Green",2));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.tan, "Tan", "Yellow", "Brown", "Orange",1));
+        questionL1List.add(new QuestionL1("What color is this?",R.drawable.orange, "Brown", "Tan", "Orange", "Beige",3));
 
         // setting the questions
         setQuestion();
