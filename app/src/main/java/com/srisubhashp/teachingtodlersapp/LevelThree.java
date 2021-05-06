@@ -64,20 +64,50 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
         question3List = new ArrayList<>();
 
         // assigning values through constructor
+
+        //Question 1
         question3List.add(new QuestionL3("What is this?",R.drawable.apple,"Apple", "Orange", "Cherry", "Kiwi", 1));
+
+        //Question 2
         question3List.add(new QuestionL3("What is this?",R.drawable.chicken, "Cat", "Dog", "Chicken", "Egg",3));
+
+        //Question 3
         question3List.add(new QuestionL3("What is this?",R.drawable.dog, "Fox", "Dog", "Cat", "Raccoon",2));
+
+        //Question 4
         question3List.add(new QuestionL3("What is this?",R.drawable.horse, "Cow", "Horse", "Wheat", "Donkey",2));
+
+        //Question 5
         question3List.add(new QuestionL3("What is this?",R.drawable.cow, "Milk", "Farm", "Cow", "Bucket",3));
+
+        //Question 6
         question3List.add(new QuestionL3("What is this?",R.drawable.key, "Key", "Door", "Lock", "House",1));
+
+        //Question 7
         question3List.add(new QuestionL3("What is this?",R.drawable.bread, "Bread", "Sandwich", "Knife", "Butter",1));
+
+        //Question 8
         question3List.add(new QuestionL3("What is this?",R.drawable.pen, "Pen", "Pencil", "Eraser", "Stick",1));
+
+        //Question 9
         question3List.add(new QuestionL3("What is this?",R.drawable.door, "Door", "Room", "House", "Window",1));
+
+        //Question 10
         question3List.add(new QuestionL3("What is this?",R.drawable.cup, "Fork", "Plate", "Bowl", "Cup",4));
+
+        //Question 11
         question3List.add(new QuestionL3("What is this?",R.drawable.tree, "Sky", "Grass", "Bush", "Tree",4));
-        question3List.add(new QuestionL3("What is this?",R.drawable.house, "City", "Room", "House", "Back Yard",3));
+
+        //Question 12
+        question3List.add(new QuestionL3("What is this?",R.drawable.lamp, "Table", "Room", "House", "Lamp",4));
+
+        //Question 13
         question3List.add(new QuestionL3("What is this?",R.drawable.bed, "Bed", "Tent", "T-Shirt", "Pants", 1));
+
+        //Question 14
         question3List.add(new QuestionL3("What is this?",R.drawable.bike, "Motorcycle", "Bicycle", "Scooter", "Skateboard",2));
+
+        //Question 15
         question3List.add(new QuestionL3("What is this?",R.drawable.banana, "Orange", "Apple", "Banana", "Watermelon", 3));
 
         // setting the questions
