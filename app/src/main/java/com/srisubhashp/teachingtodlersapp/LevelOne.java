@@ -59,6 +59,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
     {
 
         int x, y, i;
+        int k;
 
         // creating an array list that will hold the questions, answers, and correct answer
         questionL1List = new ArrayList<>();
