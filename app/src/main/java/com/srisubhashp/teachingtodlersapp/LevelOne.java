@@ -40,7 +40,6 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
         question = findViewById(R.id.textView2);
         qCount = findViewById(R.id.quest_num);
-        //imageId.setImageDrawable(getResources().getDrawable(R.id.imageId));
         imageVar=findViewById(R.id.imageView4);
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
@@ -92,7 +91,6 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
         Drawable drawable=getResources().getDrawable(questionL1List.get(0).getImageId());
         imageVar.setImageDrawable(drawable);
-        //imageVar.setImageResource(R.drawable.color_1);
         option1.setText(questionL1List.get(0).getOptionA());
         option2.setText(questionL1List.get(0).getOptionB());
         option3.setText(questionL1List.get(0).getOptionC());
@@ -237,7 +235,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                                         ((TextView) view).setText(questionL1List.get(questionNum).getQuestion());
                                         break;
                                     case 1:
-                                        ((ImageView) view).setImageResource(R.drawable.color_1);
+                                        ((ImageView) view).setImageResource(questionL1List.get(questionNum).getImageId());
                                         break;
                                     case 2:
                                         ((Button) view).setText(questionL1List.get(questionNum).getOptionA());

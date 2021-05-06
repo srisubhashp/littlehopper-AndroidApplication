@@ -40,7 +40,6 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
 
         question = findViewById(R.id.textView2);
         qCount = findViewById(R.id.quest_num);
-        //imageId.setImageDrawable(getResources().getDrawable(R.id.imageId));
         imageVar=findViewById(R.id.imageView4);
         option1 = findViewById(R.id.option1);
         option2 = findViewById(R.id.option2);
@@ -79,7 +78,7 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
         question3List.add(new QuestionL3("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
         question3List.add(new QuestionL3("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
         question3List.add(new QuestionL3("What color is this?",R.drawable.tan, "Tan", "Beige", "Brown", "Orange",1));
-        question3List.add(new QuestionL3("What color is this?",R.drawable.beige, "Brown", "Tan", "Brown", "Beige",4));
+        question3List.add(new QuestionL3("What color is this?",R.drawable.orange, "Brown", "Tan", "Brown", "Beige",4));
 
         // setting the questions
         setQuestion();
@@ -237,7 +236,7 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
                                         ((TextView) view).setText(question3List.get(questionNum).getQuestion());
                                         break;
                                     case 1:
-                                        ((ImageView) view).setImageResource(R.drawable.color_1);
+                                        ((ImageView) view).setImageResource(question3List.get(questionNum).getImageId());
                                         break;
                                     case 2:
                                         ((Button) view).setText(question3List.get(questionNum).getOptionA());
