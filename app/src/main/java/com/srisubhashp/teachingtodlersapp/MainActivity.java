@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         uProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to profile page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to profile page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), Profile.class));
             }
         });
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         uLevelOneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to level one page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to level one page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), LevelOne.class));
             }
         });
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         uLevelTwoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to level two page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to level two page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), LevelTwo.class));
             }
         });
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         uLevelThreeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to level three page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to level three page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), LevelThree.class));
             }
         });
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         uLevelTrackingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to level tracking page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to level tracking page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), LevelTracking.class));
             }
         });
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         uStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to stats page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to stats page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), Statistics.class));
             }
         });
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         uSettingsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Changing to settings page complete", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Changing to settings page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), Settings.class));
             }
         });
