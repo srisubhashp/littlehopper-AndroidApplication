@@ -1,5 +1,6 @@
 package com.srisubhashp.teachingtodlersapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,14 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +38,8 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
     private ImageView imageVar;
     private Button option1, option2, option3, option4;
     private List<QuestionL1> questionL1List;
+    private FirebaseFirestore firestore;
+
     int questionNum;
     int correctAnswers = 0;
 
@@ -37,6 +48,8 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
 
         setContentView(R.layout.activity_level_one);
         super.onCreate(savedInstanceState);
+
+        firestore=FirebaseFirestore.getInstance();
 
         question = findViewById(R.id.textView2);
         qCount = findViewById(R.id.quest_num);
@@ -51,6 +64,8 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
 
+        firestore= FirebaseFirestore.getInstance();
+
         getQuestionsList();
 
     }
@@ -64,25 +79,53 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         // creating an array list that will hold the questions, answers, and correct answer
         questionL1List = new ArrayList<>();
 
+        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    QuerySnapshot questionListfb =task.getResult();
+
+                    for(QueryDocumentSnapshot doc: questionListfb)
+                    {
+                        questionL1List.add(new QuestionL1(doc.getString("question"),
+                                R.drawable.pink,
+                                doc.getString("optionA"),
+                                doc.getString("optionB"),
+                                doc.getString("optionC"),
+                                doc.getString("optionD"),
+                                Integer.valueOf(doc.getString("correctAnswer"))
+                        ));
+                    }
+                    setQuestion();
+                }
+                else
+                {
+                    Toast.makeText(LevelOne.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
         // assigning values through constructor
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.pink,"Pink", "Blue", "Red", "Orange", 1));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.red, "Blue", "Pink", "Orange", "Red", 4));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.blue, "Green", "Yellow", "Blue", "Orange", 3));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.brown, "Black", "Brown", "Orange", "Red",2));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.purple, "Pink", "Blue", "Green", "Purple",4));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.green, "Green", "Orange", "Blue", "Purple",1));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.black, "Brown", "Black", "Gray", "Blue",2));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.gray, "Black", "Brown", "Gray", "Pink",3));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.maroon, "Red", "Purple", "Maroon", "Magenta",3));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.yellow, "Yellow", "Orange", "Red", "Purple",1));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.turquoise, "Blue", "Turquoise", "Green", "Sea Green",2));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.tan, "Tan", "Yellow", "Brown", "Orange",1));
-        questionL1List.add(new QuestionL1("What color is this?",R.drawable.orange, "Brown", "Tan", "Orange", "Beige",3));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.pink,"Pink", "Blue", "Red", "Orange", 1));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.red, "Blue", "Pink", "Orange", "Red", 4));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.blue, "Green", "Yellow", "Blue", "Orange", 3));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.brown, "Black", "Brown", "Orange", "Red",2));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.purple, "Pink", "Blue", "Green", "Purple",4));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.green, "Green", "Orange", "Blue", "Purple",1));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.black, "Brown", "Black", "Gray", "Blue",2));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.gray, "Black", "Brown", "Gray", "Pink",3));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.maroon, "Red", "Purple", "Maroon", "Magenta",3));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.yellow, "Yellow", "Orange", "Red", "Purple",1));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.turquoise, "Blue", "Turquoise", "Green", "Sea Green",2));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.magenta, "Red", "Purple", "Magenta", "Maroon",3));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.peach, "Orange", "Pink", "Red", "Peach",4));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.tan, "Tan", "Yellow", "Brown", "Orange",1));
+//        questionL1List.add(new QuestionL1("What color is this?",R.drawable.orange, "Brown", "Tan", "Orange", "Beige",3));
 
         // setting the questions
-        setQuestion();
+
     }
 
     private void setQuestion()
@@ -312,15 +355,12 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                                     if (viewNum != 0 && viewNum!=1)
                                         ((Button) view).setBackgroundTintList(valueOf(Color.parseColor("#FFFFFF")));
 
-
                                     tranAnim(view, 1, viewNum, category);
                                 }
-
                             }
 
                             @Override
                             public void onAnimationCancel(Animator animation) {
-
                             }
 
                             @Override
