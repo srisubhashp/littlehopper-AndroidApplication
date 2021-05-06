@@ -6,6 +6,6 @@
 
 ------------------
 ## Things to Do
-- [ ] Implement Firebase
-- [ ] Profile Page
+- ([ ]) Implement Firebase
+- ([x]) Profile Page
 - 
