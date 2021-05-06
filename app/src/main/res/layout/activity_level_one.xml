@@ -48,7 +48,7 @@
             android:layout_height="150dp"
             android:layout_margin="20dp"
 
-            app:srcCompat="@drawable/red"
+            app:srcCompat="@drawable/color_2"
 
             />
 
