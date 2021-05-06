@@ -89,6 +89,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         option3.setText(questionL2List.get(0).getOptionC());
         option4.setText(questionL2List.get(0).getOptionD());
 
+
         // displays what question we are on
         qCount.setText(String.valueOf(1) + "/" + String.valueOf(questionL2List.size()));
 
