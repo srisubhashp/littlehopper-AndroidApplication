@@ -69,7 +69,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         questionL2List.add(new QuestionL2("25 - 5 = __", "20", "30", "125", "5", 1));
         questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
         questionL2List.add(new QuestionL2("2 + 7 = __", "5", "9", "10", "4", 2));
-        questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
+        questionL2List.add(new QuestionL2("2 + 9 = __", "11", "10", "14", "13", 1));
         questionL2List.add(new QuestionL2("11 - 3 = __", "7", "8", "6", "5", 2));
         questionL2List.add(new QuestionL2("25 + 5 = __", "20", "30", "125", "5", 2));
         questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
