@@ -25,8 +25,8 @@ public class Statistics extends AppCompatActivity {
         returnBtn2 = findViewById(R.id.return2_button);
 
         level1.setText("Level 1: " + ScoreActivity.level1Score);
-        level2.setText("Level 1: " + ScoreActivity.level2Score);
-        level3.setText("Level 1: " + ScoreActivity.level3Score);
+        level2.setText("Level 2: " + ScoreActivity.level2Score);
+        level3.setText("Level 3: " + ScoreActivity.level3Score);
 
         returnBtn2.setOnClickListener(new View.OnClickListener() {
             @Override
