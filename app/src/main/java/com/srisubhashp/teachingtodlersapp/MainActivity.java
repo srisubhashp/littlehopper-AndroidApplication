@@ -20,8 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button uProfileBtn, uLevelOneBtn, uLevelTwoBtn, uLevelThreeBtn, uLevelTrackingBtn, uStatsBtn;
-    ImageButton uSettingsBtn;
+    Button uProfileBtn, uLevelOneBtn, uLevelTwoBtn, uLevelThreeBtn, uStatsBtn;
 
     //creating an Array List for getting data from Firebase
     public static List<String> levelsList=new ArrayList<>();
@@ -37,9 +36,7 @@ public class MainActivity extends AppCompatActivity {
         uLevelOneBtn = findViewById(R.id.levelOneBtn);
         uLevelTwoBtn = findViewById(R.id.levelTwoBtn);
         uLevelThreeBtn = findViewById(R.id.levelThreeBtn);
-        uLevelTrackingBtn = findViewById(R.id.levelTrackingBtn);
         uStatsBtn = findViewById(R.id.levelStatsBtn);
-        uSettingsBtn = findViewById(R.id.settingsBtn);
 
 
 
@@ -75,14 +72,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        uLevelTrackingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "Changing to level tracking page complete", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), LevelTracking.class));
-            }
-        });
-
         uStatsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,15 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), Statistics.class));
             }
         });
-
-        uSettingsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "Changing to settings page complete", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), Settings.class));
-            }
-        });
-
     }
 
 //    private void loadData() {

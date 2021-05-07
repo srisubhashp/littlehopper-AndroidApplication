@@ -25,20 +25,9 @@
         android:id="@+id/levelStatsBtn"
         android:layout_width="125dp"
         android:layout_height="60dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="150dp"
         android:background="#FFC107"
         android:text="Level Stats"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/levelTrackingBtn" />
-
-    <Button
-        android:id="@+id/levelTrackingBtn"
-        android:layout_width="125dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="64dp"
-        android:background="#FFC107"
-        android:text="Level Tracking"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/levelTwoBtn" />
@@ -87,15 +76,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/homePageView" />
-
-    <ImageButton
-        android:id="@+id/settingsBtn"
-        android:layout_width="43dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

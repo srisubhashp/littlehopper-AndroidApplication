@@ -85,7 +85,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         // creating an array list that will hold the questions, answers, and correct answer
         questionL1List = new ArrayList<>();
 
-        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").orderBy("sn", Query.Direction.valueOf("asc")).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").orderBy("sn", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful())

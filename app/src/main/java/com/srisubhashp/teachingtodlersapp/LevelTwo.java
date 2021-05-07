@@ -202,6 +202,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
             // we will display the score activity
             Intent intent = new Intent(LevelTwo.this,ScoreActivity.class);
             intent.putExtra("SCORE", String.valueOf(correctAnswers) + "/" + String.valueOf(questionL2List.size()));
+            intent.putExtra("LEVEL",2);
             startActivity(intent);
             LevelTwo.this.finish();
         }

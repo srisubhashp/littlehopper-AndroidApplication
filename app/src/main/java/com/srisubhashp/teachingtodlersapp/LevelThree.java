@@ -238,6 +238,7 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
             // we will display the score activity
             Intent intent = new Intent(LevelThree.this,ScoreActivity.class);
             intent.putExtra("SCORE", String.valueOf(correctAnswers) + "/" + String.valueOf(question3List.size()));
+            intent.putExtra("LEVEL",3);
             startActivity(intent);
             LevelThree.this.finish();
         }
