@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -72,28 +73,39 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
     {
 
         int x, y, i;
-        int k;
+        int k=1;
+        String colorVar="color_";
+
+
+        int[]imageValues=new int[]{R.drawable.color_1,R.drawable.color_2,R.drawable.color_3,R.drawable.color_4,R.drawable.color_5,
+            R.drawable.color_6,R.drawable.color_7,R.drawable.color_8,R.drawable.color_9,R.drawable.color_10,
+            R.drawable.color_11,R.drawable.color_12,R.drawable.color_13,R.drawable.color_14,R.drawable.color_15};
+
 
         // creating an array list that will hold the questions, answers, and correct answer
         questionL1List = new ArrayList<>();
 
-        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").orderBy("sn", Query.Direction.valueOf("asc")).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful())
                 {
                     QuerySnapshot questionListfb =task.getResult();
 
+                    int k=0;// the image number and we are then incrementing it.
+
+                    String image=String.format("R.drawable.color_%d",k);
                     for(QueryDocumentSnapshot doc: questionListfb)
                     {
                         questionL1List.add(new QuestionL1(doc.getString("question"),
-                                R.drawable.color_1,
+                                imageValues[k],
                                 doc.getString("optionA"),
                                 doc.getString("optionB"),
                                 doc.getString("optionC"),
                                 doc.getString("optionD"),
                                 Integer.valueOf(doc.getString("correctAnswer"))
                         ));
+                        k++;
                     }
                     setQuestion();
                 }
