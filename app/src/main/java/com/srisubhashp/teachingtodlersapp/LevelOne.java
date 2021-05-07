@@ -261,6 +261,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
             // we will display the score activity
             Intent intent = new Intent(LevelOne.this,ScoreActivity.class);
             intent.putExtra("SCORE", String.valueOf(correctAnswers) + "/" + String.valueOf(questionL1List.size()));
+            intent.putExtra("LEVEL",1);
             startActivity(intent);
             LevelOne.this.finish();
         }

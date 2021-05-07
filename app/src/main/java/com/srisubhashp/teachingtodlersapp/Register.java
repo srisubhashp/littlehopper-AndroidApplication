@@ -30,14 +30,17 @@ public class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText uFirstName, uLastName, uEmail, uPassword;
     Button uRegisterBtn;
+    Map<String,Object> user = new HashMap<>();
+
+    public static String firstName;
+    public static String lastName;
+    public static String email;
 
     TextView uLoginView;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     ProgressBar progressBar;
     String userID;//for Firebase User collection
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +69,9 @@ public class Register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 int notValid = 0;
-                String firstName = uFirstName.getText().toString().trim();
-                String lastName = uLastName.getText().toString().trim();
-                String email = uEmail.getText().toString().trim();
+                firstName = uFirstName.getText().toString().trim();
+                lastName = uLastName.getText().toString().trim();
+                email = uEmail.getText().toString().trim();
                 String password = uPassword.getText().toString().trim();
                 String level1Score="";
                 String level2Score="";
@@ -110,7 +113,7 @@ public class Register extends AppCompatActivity {
                             //this is used to refer to the indiviual document of the User collection in Firestore.
                             //even if we did not create a collection before, it will do it for us
                             DocumentReference documentReference=fStore.collection("users").document(userID);
-                            Map<String,Object> user = new HashMap<>();
+
                             user.put("firstName",firstName);
                             user.put("email",email);
                             user.put("lastName",lastName);
