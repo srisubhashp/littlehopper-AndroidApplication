@@ -1,6 +1,5 @@
 package com.srisubhashp.teachingtodlersapp;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,14 +14,6 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +25,6 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
     private TextView question, qCount;
     private Button option1, option2, option3, option4;
     private List<QuestionL2> questionL2List;
-    private FirebaseFirestore firestore;
     int questionNum;
     int correctAnswers = 0;
 
@@ -68,7 +58,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         // creating an array list that will hold the questions, answers, and correct answer
         questionL2List = new ArrayList<>();
 
-        /* assigning values through constructor
+        // assigning values through constructor
         questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
         questionL2List.add(new QuestionL2("2 + 3 = __", "7", "8", "6", "5", 4));
         questionL2List.add(new QuestionL2("25 - 5 = __", "20", "30", "125", "5", 1));
@@ -85,37 +75,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
         questionL2List.add(new QuestionL2("13 - 9 = __", "5", "9", "10", "4", 4));
 
-        setting the questions*/
-        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level2").orderBy("sn", Query.Direction.valueOf("asc")).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                if(task.isSuccessful())
-                {
-                    QuerySnapshot questionListfb =task.getResult();
-
-                    int k=0;// the image number and we are then incrementing it.
-
-                    String image=String.format("R.drawable.color_%d",k);
-                    for(QueryDocumentSnapshot doc: questionListfb)
-                    {
-                        questionL2List.add(new QuestionL2(doc.getString("question"),
-                                doc.getString("optionA"),
-                                doc.getString("optionB"),
-                                doc.getString("optionC"),
-                                doc.getString("optionD"),
-                                Integer.valueOf(doc.getString("correctAnswer"))
-                        ));
-                        k++;
-                    }
-                    setQuestion();
-                }
-                else
-                {
-                    Toast.makeText(LevelTwo.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
+        // setting the questions
         setQuestion();
 
     }
