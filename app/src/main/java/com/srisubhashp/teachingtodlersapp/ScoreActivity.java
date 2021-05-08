@@ -24,20 +24,16 @@ public class ScoreActivity extends AppCompatActivity {
     private TextView score;
     private Button cont;
 
-    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
-    String userID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();//grab the Fauth id of the current User.
-        Log.d("userID", userID);
-
-        //this is used to refer to the individual document of the User collection in Firestore.
-        //even if we did not create a collection before, it will do it for us
-        DocumentReference documentReference=fStore.collection("users").document(userID);
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+
+        FirebaseFirestore fStore = FirebaseFirestore.getInstance();
+        String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();//grab the Fauth id of the current User.;
+        DocumentReference documentReference = fStore.collection("users").document(userID);
 
         score = findViewById(R.id.sa_scoreView);
         cont = findViewById(R.id.sa_continueButton);
