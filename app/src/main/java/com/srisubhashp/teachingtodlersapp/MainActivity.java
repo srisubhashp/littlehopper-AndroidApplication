@@ -80,43 +80,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-//    private void loadData() {
-//        levelsList.clear();//clearing any previous contents.
-//
-//        fireStore.collection("Todlers-Quiz").document("QuizQuestions").get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-//            @Override
-//            public void onComplete(@NonNull Task<DocumentSnapshot> task)
-//            {
-//                if(task.isSuccessful())// if successfully retrieved the data
-//                {
-//                    DocumentSnapshot doc = task.getResult();
-//                    if(doc.exists())// another security check
-//                    {
-//                        long levelCount=(long)doc.get("Levels");
-//
-//                        for(int i=1;i<=levelCount;i++)
-//                        {
-//                            String levelName=doc.getString("Level"+String.valueOf(i));//we are getting the keys
-//                            levelsList.add(levelName);
-//                        }
-//
-////                        Intent intent= new Intent(MainActivity.this,MainActivity.class);
-////                        startActivity(intent);// we are making sure to load  the application only after all the data is received.
-////                        MainActivity.this.finish();
-//                    }
-//                    else {
-//                        Toast.makeText(MainActivity.this,"No Level Document Exists !",Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                else
-//                {   //if query was successful.
-//                    Toast.makeText(MainActivity.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//                // we are adding onCompleteListener because this executes when its loaded even though it passes or fails.
-//    }
-
-
 }

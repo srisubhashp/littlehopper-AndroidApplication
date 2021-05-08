@@ -16,8 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Profile extends AppCompatActivity {
 
-    private TextView profile, firstName, lastName, email;
-    private Button returnBtn;
+    private TextView profile, firstName, lastName, email, phone, age;
+    private Button returnBtn, editBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +32,21 @@ public class Profile extends AppCompatActivity {
         firstName = findViewById(R.id.firstname_text);
         lastName = findViewById(R.id.lastname_text);
         email = findViewById(R.id.email_text);
+        phone = findViewById(R.id.phone_text);
+        age = findViewById(R.id.age_text);
+
         returnBtn = findViewById(R.id.return_button);
+        editBtn = findViewById(R.id.edit_button);
 
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 User user = documentSnapshot.toObject(User.class);
-                firstName.setText(user.getFirstName());
-                lastName.setText(user.getLastName());
-                email.setText(user.getEmail());
+                firstName.setText("First Name: " + user.getFirstName());
+                lastName.setText("Last Name: " + user.getLastName());
+                email.setText("Email: " + user.getEmail());
+                age.setText("Age: " + user.getAge());
+                phone.setText("Phone: " + user.getPhone());
             }
         });
 
@@ -50,6 +56,13 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), editProfile.class));
             }
         });
     }

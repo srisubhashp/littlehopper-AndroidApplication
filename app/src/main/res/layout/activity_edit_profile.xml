@@ -40,7 +40,7 @@
             android:layout_gravity="left"
             android:layout_marginBottom="12dp"
             android:layout_marginHorizontal="12dp"
-            android:text="First Name"
+            android:hint="First Name"
             android:textSize="20dp" />
 
         <EditText
@@ -50,18 +50,9 @@
             android:layout_gravity="left"
             android:layout_marginBottom="12dp"
             android:layout_marginHorizontal="12dp"
-            android:text="Last Name"
+            android:hint="Last Name"
             android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/edit_email_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginBottom="12dp"
-            android:layout_marginHorizontal="12dp"
-            android:text="Email"
-            android:textSize="20dp" />
 
         <EditText
             android:id="@+id/edit_age_text"
@@ -70,7 +61,7 @@
             android:layout_gravity="left"
             android:layout_marginBottom="12dp"
             android:layout_marginHorizontal="12dp"
-            android:text="Age"
+            android:hint="Age"
             android:textSize="20dp" />
 
         <EditText
@@ -80,21 +71,33 @@
             android:layout_gravity="left"
             android:layout_marginBottom="12dp"
             android:layout_marginHorizontal="12dp"
-            android:text="Phone"
+            android:hint="Phone"
             android:textSize="20dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:visibility="invisible"
+            android:layout_gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/registerView" />
 
         <Button
             android:id="@+id/save_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="45dp"
             android:layout_marginHorizontal="64dp"
             android:background="@color/white"
             android:textColor="@color/black"
             android:text="SAVE" />
 
         <Button
-            android:id="@+id/return_button"
+            android:id="@+id/return_profile_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"

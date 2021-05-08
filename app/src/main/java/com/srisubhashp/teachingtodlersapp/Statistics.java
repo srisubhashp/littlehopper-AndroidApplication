@@ -16,7 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Statistics extends AppCompatActivity {
 
-    private TextView statistics, level1, level2, level3;
+    private TextView level1, level2, level3, level1A, level2A, level3A;
     private Button returnBtn2;
 
     @Override
@@ -28,19 +28,24 @@ public class Statistics extends AppCompatActivity {
         String userID = FirebaseAuth.getInstance().getCurrentUser().getUid();//grab the Fauth id of the current User.;
         DocumentReference docRef = fStore.collection("users").document(userID);
 
-        statistics = findViewById(R.id.statistics_view);
         level1 = findViewById(R.id.level1_view);
+        level1A = findViewById(R.id.level1_attempts_view);
         level2 = findViewById(R.id.level2_view);
+        level2A = findViewById(R.id.level2_attempts_view);
         level3 = findViewById(R.id.level3_view);
+        level3A = findViewById(R.id.level3_attempts_view);
         returnBtn2 = findViewById(R.id.return2_button);
 
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 User user = documentSnapshot.toObject(User.class);
-                level1.setText("Level 1: " + user.getLevelOneScore());
-                level2.setText("Level 2: " + user.getLevelTwoScore());
-                level3.setText("Level 3: " + user.getLevelThreeScore());
+                level1.setText("Last Level 1 Attempt: " + user.getLevelOneScore());
+                level2.setText("Last Level 2 Attempt: " + user.getLevelTwoScore());
+                level3.setText("Last Level 3 Attempt: " + user.getLevelThreeScore());
+                level1A.setText("Total attempts: " + user.getLevelOneAttempts());
+                level2A.setText("Total attempts: " + user.getLevelTwoAttempts());
+                level3A.setText("Total attempts: " + user.getLevelThreeAttempts());
             }
         });
 

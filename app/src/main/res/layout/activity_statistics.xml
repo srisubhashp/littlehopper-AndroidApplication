@@ -34,21 +34,51 @@
             android:id="@+id/level1_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="12dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/level1_attempts_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="12dp"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/level2_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="12dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/level2_attempts_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="12dp"
             android:text="TextView" />
 
         <TextView
             android:id="@+id/level3_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginVertical="12dp"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/level3_attempts_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="12dp"
             android:text="TextView" />
 
         <Button

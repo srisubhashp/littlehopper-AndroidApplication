@@ -1,5 +1,6 @@
 package com.srisubhashp.teachingtodlersapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +15,14 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,13 +34,16 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
     private TextView question, qCount;
     private Button option1, option2, option3, option4;
     private List<QuestionL2> questionL2List;
+    private FirebaseFirestore firestore;//this is a variable for dealing with Firestore
     int questionNum;
     int correctAnswers = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_level_two);
+        super.onCreate(savedInstanceState);
+        firestore=FirebaseFirestore.getInstance();//initializing the database
 
         question = findViewById(R.id.question);
         qCount = findViewById(R.id.quest_num);
@@ -58,25 +70,53 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
         // creating an array list that will hold the questions, answers, and correct answer
         questionL2List = new ArrayList<>();
 
+        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level2").orderBy("sn", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    QuerySnapshot questionListfb=task.getResult();
+
+                    for(QueryDocumentSnapshot doc:questionListfb)
+                    {
+                        questionL2List.add(new QuestionL2(doc.getString("question"),
+                                doc.getString("optionA"),
+                                doc.getString("optionB"),
+                                doc.getString("optionC"),
+                                doc.getString("optionD"),
+                                Integer.valueOf(doc.getString("correctAnswer"))
+                        ));
+                    }
+                    setQuestion();
+                }
+                else
+                {
+                    Toast.makeText(LevelTwo.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
         // assigning values through constructor
-        questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
-        questionL2List.add(new QuestionL2("2 + 3 = __", "7", "8", "6", "5", 4));
-        questionL2List.add(new QuestionL2("25 - 5 = __", "20", "30", "125", "5", 1));
-        questionL2List.add(new QuestionL2("8 + 6 = __", "2", "1", "14", "3", 3));
-        questionL2List.add(new QuestionL2("2 + 7 = __", "5", "9", "10", "4", 2));
-        questionL2List.add(new QuestionL2("6 - 6 = __", "4", "0", "1", "2", 2));
-        questionL2List.add(new QuestionL2("2 + 3 = __", "7", "8", "6", "5", 4));
-        questionL2List.add(new QuestionL2("25 - 20 = __", "20", "30", "125", "5", 4));
-        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
-        questionL2List.add(new QuestionL2("8 + 2 = __", "5", "9", "10", "4", 3));
-        questionL2List.add(new QuestionL2("2 + 9 = __", "11", "10", "14", "13", 1));
-        questionL2List.add(new QuestionL2("11 - 3 = __", "7", "8", "6", "5", 2));
-        questionL2List.add(new QuestionL2("25 + 5 = __", "20", "30", "125", "5", 2));
-        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
-        questionL2List.add(new QuestionL2("13 - 9 = __", "5", "9", "10", "4", 4));
+//        questionL2List.add(new QuestionL2("2 + 2 = __", "4", "3", "1", "2", 1));
+//        questionL2List.add(new QuestionL2("2 + 3 = __", "7", "8", "6", "5", 4));
+//        questionL2List.add(new QuestionL2("25 - 5 = __", "20", "30", "125", "5", 1));
+//        questionL2List.add(new QuestionL2("8 + 6 = __", "2", "1", "14", "3", 3));
+//        questionL2List.add(new QuestionL2("2 + 7 = __", "5", "9", "10", "4", 2));
+//        questionL2List.add(new QuestionL2("6 - 6 = __", "4", "0", "1", "2", 2));
+//        questionL2List.add(new QuestionL2("2 + 3 = __", "7", "8", "6", "5", 4));
+//        questionL2List.add(new QuestionL2("25 - 20 = __", "20", "30", "125", "5", 4));
+//        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
+//        questionL2List.add(new QuestionL2("8 + 2 = __", "5", "9", "10", "4", 3));
+//        questionL2List.add(new QuestionL2("2 + 9 = __", "11", "10", "14", "13", 1));
+//        questionL2List.add(new QuestionL2("11 - 3 = __", "7", "8", "6", "5", 2));
+//        questionL2List.add(new QuestionL2("25 + 5 = __", "20", "30", "125", "5", 2));
+//        questionL2List.add(new QuestionL2("8 - 6 = __", "2", "1", "14", "3", 1));
+//        questionL2List.add(new QuestionL2("13 - 9 = __", "5", "9", "10", "4", 4));
 
         // setting the questions
-        setQuestion();
+        //setQuestion();
 
     }
 
@@ -194,7 +234,7 @@ public class LevelTwo extends AppCompatActivity implements View.OnClickListener
             tranAnim(option3, 0, 3,2);
             tranAnim(option4, 0, 4,2);
 
-            qCount.setText(String.valueOf(questionNum+1) + "/" + String.valueOf(questionL2List.size()));
+            qCount.setText(String.format("%s/%s", String.valueOf(questionNum + 1), String.valueOf(questionL2List.size())));
 
         }
         else // we are done with the questions

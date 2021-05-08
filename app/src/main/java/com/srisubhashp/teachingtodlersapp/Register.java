@@ -30,7 +30,6 @@ public class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText uFirstName, uLastName, uEmail, uPassword;
     Button uRegisterBtn;
-    //Map<String,Object> user = new HashMap<>();
 
     public String firstName;
     public String lastName;
