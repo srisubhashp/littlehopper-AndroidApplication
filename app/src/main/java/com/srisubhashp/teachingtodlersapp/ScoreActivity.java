@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,7 +14,9 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class ScoreActivity extends AppCompatActivity {
@@ -21,56 +24,42 @@ public class ScoreActivity extends AppCompatActivity {
     private TextView score;
     private Button cont;
 
-    FirebaseFirestore fStore;
-    FirebaseAuth fAuth;
+    FirebaseFirestore fStore = FirebaseFirestore.getInstance();
     String userID;
-
-    public static String level1Score="0/15";
-    public static String level2Score="0/15";
-    public static String level3Score="0/15";
-
-    public static String getScore1()
-    {
-        return level1Score;
-    }
-    public static String getScore2()
-    {
-        return level2Score;
-    }
-    public static String getScore3()
-    {
-        return level3Score;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        userID = FirebaseAuth.getInstance().getCurrentUser().getUid();//grab the Fauth id of the current User.
+        Log.d("userID", userID);
+
+        //this is used to refer to the individual document of the User collection in Firestore.
+        //even if we did not create a collection before, it will do it for us
+        DocumentReference documentReference=fStore.collection("users").document(userID);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
         score = findViewById(R.id.sa_scoreView);
         cont = findViewById(R.id.sa_continueButton);
 
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
-
         String score_str = getIntent().getStringExtra("SCORE");
         int level=getIntent().getIntExtra("LEVEL",0);
         score.setText(score_str);
 
-        userID=fAuth.getCurrentUser().getUid();//grab the fAuth ID of the current user.
-        //Document
-
         if(level==1)
         {
-            level1Score=score_str;
+            documentReference.update("levelOneScore", score_str);
+            documentReference.update("levelOneAttempts", FieldValue.increment(1));
         }
         else if(level==2)
         {
-            level2Score=score_str;
+            documentReference.update("levelTwoScore", score_str);
+            documentReference.update("levelTwoAttempts", FieldValue.increment(1));
         }
         else if(level==3)
         {
-            level3Score=score_str;
+            documentReference.update("levelThreeScore", score_str);
+            documentReference.update("levelThreeAttempts", FieldValue.increment(1));
         }
 
 

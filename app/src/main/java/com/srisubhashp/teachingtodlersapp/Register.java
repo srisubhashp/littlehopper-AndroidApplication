@@ -30,11 +30,11 @@ public class Register extends AppCompatActivity {
     public static final String TAG = "TAG";
     EditText uFirstName, uLastName, uEmail, uPassword;
     Button uRegisterBtn;
-    Map<String,Object> user = new HashMap<>();
+    //Map<String,Object> user = new HashMap<>();
 
-    public static String firstName;
-    public static String lastName;
-    public static String email;
+    public String firstName;
+    public String lastName;
+    public String email;
 
     TextView uLoginView;
     FirebaseAuth fAuth;
@@ -73,10 +73,6 @@ public class Register extends AppCompatActivity {
                 lastName = uLastName.getText().toString().trim();
                 email = uEmail.getText().toString().trim();
                 String password = uPassword.getText().toString().trim();
-                String level1Score="";
-                String level2Score="";
-                String level3Score="";
-                String phoneNumber="";
 
                 if(TextUtils.isEmpty(firstName)) {
                     uFirstName.setError("Must enter a first name.");
@@ -110,17 +106,11 @@ public class Register extends AppCompatActivity {
 
                             userID=fAuth.getCurrentUser().getUid();//grab the Fauth id of the current User.
 
-                            //this is used to refer to the indiviual document of the User collection in Firestore.
+                            //this is used to refer to the individual document of the User collection in Firestore.
                             //even if we did not create a collection before, it will do it for us
                             DocumentReference documentReference=fStore.collection("users").document(userID);
 
-                            user.put("firstName",firstName);
-                            user.put("email",email);
-                            user.put("lastName",lastName);
-                            user.put("phoneNumber",phoneNumber);
-                            user.put("level1Score",level1Score);
-                            user.put("level2Score",level2Score);
-                            user.put("level3Score",level3Score);
+                            User user = new User(firstName, lastName, email);
 
                             //we are going to create the User data using Hashmap and store it in Firebase.
 
