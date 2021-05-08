@@ -137,6 +137,7 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 Toast.makeText(Register.this, "Changing to login page complete", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getApplicationContext(), Login.class));
+                finish();
             }
         });
     }

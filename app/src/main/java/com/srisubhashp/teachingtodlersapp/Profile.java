@@ -1,5 +1,6 @@
 package com.srisubhashp.teachingtodlersapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -17,7 +20,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 public class Profile extends AppCompatActivity {
 
     private TextView profile, firstName, lastName, email, phone, age;
-    private Button returnBtn, editBtn;
+    private Button returnBtn, editBtn, logOutBtn;
+    private FirebaseAuth fAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,7 @@ public class Profile extends AppCompatActivity {
 
         returnBtn = findViewById(R.id.return_button);
         editBtn = findViewById(R.id.edit_button);
+        logOutBtn = findViewById(R.id.logOutBtn);
 
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -56,6 +61,7 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
 
@@ -63,6 +69,19 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), editProfile.class));
+                finish();
+            }
+        });
+
+        logOutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fAuth = FirebaseAuth.getInstance();
+                fAuth.signOut();
+
+                Intent intent = new Intent(getApplicationContext(), Login.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
         });
     }

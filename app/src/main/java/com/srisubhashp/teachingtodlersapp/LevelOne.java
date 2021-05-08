@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -37,7 +38,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
     private ImageView imageVar;
     private Button option1, option2, option3, option4;
     private List<QuestionL1> questionL1List;
-    private FirebaseFirestore firestore;
+    private FirebaseFirestore fStore;
 
     int questionNum;
     int correctAnswers = 0;
@@ -48,7 +49,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         setContentView(R.layout.activity_level_one);
         super.onCreate(savedInstanceState);
 
-        firestore=FirebaseFirestore.getInstance();
+        fStore=FirebaseFirestore.getInstance();
 
         question = findViewById(R.id.textView2);
         qCount = findViewById(R.id.quest_num);
@@ -62,8 +63,6 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         option2.setOnClickListener(this);
         option3.setOnClickListener(this);
         option4.setOnClickListener(this);
-
-        firestore= FirebaseFirestore.getInstance();
 
         getQuestionsList();
 
@@ -85,7 +84,7 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
         // creating an array list that will hold the questions, answers, and correct answer
         questionL1List = new ArrayList<>();
 
-        firestore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").orderBy("sn", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        fStore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level1").orderBy("sn", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if(task.isSuccessful())
@@ -93,8 +92,6 @@ public class LevelOne extends AppCompatActivity implements View.OnClickListener
                     QuerySnapshot questionListfb =task.getResult();
 
                     int k=0;// the image number and we are then incrementing it.
-
-                    String image=String.format("R.drawable.color_%d",k);
                     for(QueryDocumentSnapshot doc: questionListfb)
                     {
                         questionL1List.add(new QuestionL1(doc.getString("question"),

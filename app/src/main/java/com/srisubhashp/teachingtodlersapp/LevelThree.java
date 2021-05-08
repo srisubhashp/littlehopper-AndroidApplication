@@ -1,5 +1,6 @@
 package com.srisubhashp.teachingtodlersapp;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,6 +18,14 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +38,7 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
     private ImageView imageVar;
     private Button option1, option2, option3, option4;
     private List<QuestionL3> question3List;
+    private FirebaseFirestore fStore;
     int questionNum;
     int correctAnswers = 0;
 
@@ -37,6 +47,8 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
 
         setContentView(R.layout.activity_level_one);
         super.onCreate(savedInstanceState);
+
+        fStore=FirebaseFirestore.getInstance();
 
         question = findViewById(R.id.textView2);
         qCount = findViewById(R.id.quest_num);
@@ -65,53 +77,77 @@ public class LevelThree extends AppCompatActivity implements View.OnClickListene
 
         // assigning values through constructor
 
-        //Question 1
+        /*Question 1
         question3List.add(new QuestionL3("What is this?",R.drawable.apple,"Apple", "Orange", "Cherry", "Kiwi", 1));
-
         //Question 2
         question3List.add(new QuestionL3("What is this?",R.drawable.chicken, "Cat", "Dog", "Chicken", "Egg",3));
-
         //Question 3
         question3List.add(new QuestionL3("What is this?",R.drawable.dog, "Fox", "Dog", "Cat", "Raccoon",2));
-
         //Question 4
         question3List.add(new QuestionL3("What is this?",R.drawable.horse, "Cow", "Horse", "Wheat", "Donkey",2));
-
         //Question 5
         question3List.add(new QuestionL3("What is this?",R.drawable.cow, "Milk", "Farm", "Cow", "Bucket",3));
-
         //Question 6
         question3List.add(new QuestionL3("What is this?",R.drawable.key, "Key", "Door", "Lock", "House",1));
-
         //Question 7
         question3List.add(new QuestionL3("What is this?",R.drawable.bread, "Bread", "Sandwich", "Knife", "Butter",1));
-
         //Question 8
         question3List.add(new QuestionL3("What is this?",R.drawable.pen, "Pen", "Pencil", "Eraser", "Stick",1));
-
         //Question 9
         question3List.add(new QuestionL3("What is this?",R.drawable.door, "Door", "Room", "House", "Window",1));
-
         //Question 10
         question3List.add(new QuestionL3("What is this?",R.drawable.cup, "Fork", "Plate", "Bowl", "Cup",4));
-
         //Question 11
         question3List.add(new QuestionL3("What is this?",R.drawable.tree, "Sky", "Grass", "Bush", "Tree",4));
-
         //Question 12
         question3List.add(new QuestionL3("What is this?",R.drawable.lamp, "Table", "Room", "House", "Lamp",4));
-
         //Question 13
         question3List.add(new QuestionL3("What is this?",R.drawable.bed, "Bed", "Tent", "T-Shirt", "Pants", 1));
-
         //Question 14
         question3List.add(new QuestionL3("What is this?",R.drawable.bike, "Motorcycle", "Bicycle", "Scooter", "Skateboard",2));
-
         //Question 15
         question3List.add(new QuestionL3("What is this?",R.drawable.banana, "Orange", "Apple", "Banana", "Watermelon", 3));
 
         // setting the questions
-        setQuestion();
+        setQuestion();*/
+
+        int[]imageValues=new int[]{R.drawable.apple,R.drawable.chicken,R.drawable.dog,R.drawable.horse,R.drawable.cow,
+                R.drawable.key,R.drawable.bread,R.drawable.pen,R.drawable.door,R.drawable.cup,
+                R.drawable.tree,R.drawable.lamp,R.drawable.bed,R.drawable.bike,R.drawable.banana};
+
+
+        // creating an array list that will hold the questions, answers, and correct answer
+        question3List = new ArrayList<>();
+
+        fStore.collection("Todlers-Quiz").document("QuizQuestions").collection("Level3").orderBy("sn", Query.Direction.ASCENDING).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if(task.isSuccessful())
+                {
+                    QuerySnapshot questionListfb =task.getResult();
+
+                    int k=0;// the image number and we are then incrementing it.
+                    for(QueryDocumentSnapshot doc: questionListfb)
+                    {
+                        question3List.add(new QuestionL3(doc.getString("question"),
+                                imageValues[k],
+                                doc.getString("optionA"),
+                                doc.getString("optionB"),
+                                doc.getString("optionC"),
+                                doc.getString("optionD"),
+                                Integer.valueOf(doc.getString("correctAnswer"))
+                        ));
+                        k++;
+                    }
+                    setQuestion();
+                }
+                else
+                {
+                    Toast.makeText(LevelThree.this,task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 
     private void setQuestion()
