@@ -22,7 +22,7 @@
 
 ## Game Levels
 
-One the homepage, the user can select from three different game levels
+On the homepage, the user can select from three different game levels
  - Level 1 : Identifying colors
  - Level 2 : Simple Arithmetic 
  - Level 3 : Identifying objects and animals
