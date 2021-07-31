@@ -1,5 +1,8 @@
-﻿# CSE 3310 - Group 1 README
-
+﻿# Little Hopper - Group 1 README
+ 
+ This is an application for kids to learn math and imrpove their vocabulary through interactive content utilizing various types of quizzes. 
+ 
+ This was a project for our Software Fundamentals course (UTA-CSE-3310). 
 
 
 ## Building the app
