@@ -50,8 +50,6 @@ On the Profile Page, the user will be able to view
 The user's name and email address is entered during the registration process, while the age and phone number can be added within the app.
 
 The user also has the option to log out of the app on this page.
-![image](https://user-images.githubusercontent.com/55814483/127751634-8f4ed073-1138-44b5-b2db-eecde0e28466.png)
-
 
 ## Level Statistics
 
