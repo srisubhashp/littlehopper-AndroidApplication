@@ -1,10 +1,12 @@
-﻿# Little Hopper - Group 1 README
+﻿# Little Hopper - Educational Android Application
  
- This is an application for kids to learn math and imrpove their vocabulary through interactive content utilizing various types of quizzes. 
+ This is an application for children to enhance their math and imrpove their vocabulary through interactive content using various types of quizzes. 
  
- This was a project for our Software Fundamentals course (UTA-CSE-3310). 
-
-
+ - Programmed Firebase SQL database for customized quiz content and Firestore for authentication.
+ - Designed and implemented front-end with Figma, Java & XML.
+ - Collaborated as a team of 5 developers to deliver activity/use-case/class diagrams, code documentation.
+----
+In-Depth Details:
 ## Building the app
 
 - The apk of the app can be executed by following the below path :
